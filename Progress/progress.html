@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress</title>
+</head>
+<style>
+    body {
+        height: 100vh;
+        display: flex;
+        background-color: black;
+    }
+    div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0 auto;
+        border: 1px solid black;
+    }
+    label {
+        text-align: center;
+    }
+    progress {
+        background-color: #FFA500; /* Change to your desired color code */
+    }
+</style>
+<body>
+    <label for="file">Downloading progress:</label>
+    <div>
+        <progress id="file" value="0" max="100">0%</progress>
+        <p id="demo"></p>
+    </div>
+    <p id="demo2"></p>
+</body>
+<script>
+    let file = document.getElementById('file');
+    let demo = document.getElementById("demo");
+    demo.style.color = "WHITE";
+    let demo2 = document.getElementById("demo2");
+    demo2.style.color = "white"
+    let start = 0;
+    let target = 100;
+    let interValid = setInterval(increase, 100);
+    let notify = "Downloading finished!!!"
+    
+    function increase() {
+        file.value = start;
+        if (start < target) {
+            start++;
+            demo.innerHTML = start + "%";
+        } else {
+            clearInterval(interValid);
+            demo2.innerHTML = notify;
+
+        }
+
+    }
+</script>
+</html>
